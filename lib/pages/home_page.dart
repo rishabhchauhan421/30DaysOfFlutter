@@ -11,11 +11,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Catalog App"),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
-          "Login Page",
+          "Home Page",
           style: TextStyle(
-              fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
+              fontSize: 20, color: Colors.red, fontWeight: FontWeight.bold),
         ),
       ),
       drawer: Drawer(),
