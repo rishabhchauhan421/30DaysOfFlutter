@@ -3,8 +3,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:frontend/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
+  bool changeButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class LoginPage extends StatelessWidget {
           SizedBox(
             height: 20.0,
           ),
-          Text("Welcome",
+          Text("Welcome $name",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           SizedBox(
             height: 20.0,
@@ -27,9 +35,10 @@ class LoginPage extends StatelessWidget {
               children: [
                 TextFormField(
                     decoration: InputDecoration(
-                  hintText: "Enter Username",
-                  labelText: "Username",
-                )),
+                      hintText: "Enter Username",
+                      labelText: "Username",
+                    ),
+                    onChanged: (value) => {name = value, setState(() {})}),
                 TextFormField(
                     obscureText: true,
                     decoration: InputDecoration(
@@ -39,12 +48,35 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
-                ElevatedButton(
-                  child: Text("Login"),
-                  style: TextButton.styleFrom(),
-                  onPressed: () {
-                    Navigator.pushNamed(context, MyRoutes.HOMEROUTE);
+                // ElevatedButton(
+                //   child: Text("Login"),
+                //   style: TextButton.styleFrom(),
+                //   onPressed: () {
+                //     Navigator.pushNamed(context, MyRoutes.HOMEROUTE);
+                //   },
+                // )
+                InkWell(
+                  onTap: () => {
+                    setState(() {
+                      changeButton = !changeButton;
+                    })
                   },
+                  child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: changeButton ? 50 : 100,
+                      height: 50,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Colors.deepPurple,
+                      )),
                 )
               ],
             ),
