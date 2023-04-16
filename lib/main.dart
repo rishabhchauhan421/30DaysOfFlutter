@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
         ),
-        initialRoute: '/login',
+        initialRoute: MyRoutes.HOMEROUTE,
+        debugShowCheckedModeBanner: false,
         routes: {
           MyRoutes.ROOTROUTE: (context) => HomePage(),
           MyRoutes.HOMEROUTE: (context) => HomePage(),
